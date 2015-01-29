@@ -10,7 +10,7 @@ public class Fibonacci {
 		lastFibonacci = last;
 	}
 	
-	int fibonacciN (int n) {
+	long fibonacciN (int n) {
 		
 		if(n < 1) { return 0;}
 		else if(n == 1 || n == 2) { return 1;}
@@ -21,7 +21,7 @@ public class Fibonacci {
 		};
 	// calculates fibonacci numbers from interval	
 	void calculateFibonacci(){
-		int fibonacciN;
+		long fibonacciN;
 		for (int i = firstFibonacci; i <= lastFibonacci; i++) {
 			fibonacciN = fibonacciN(i);
 			System.out.print(fibonacciN);
