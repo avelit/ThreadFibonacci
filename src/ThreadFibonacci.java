@@ -1,7 +1,7 @@
 public class ThreadFibonacci extends Thread {
 
-	int firstFibonacci;
-	int lastFibonacci;
+	private volatile int firstFibonacci;
+	private volatile int lastFibonacci;
 
 	public void run() {
 		Fibonacci fib = new Fibonacci(firstFibonacci, lastFibonacci);
