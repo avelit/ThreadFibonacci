@@ -32,14 +32,14 @@ public class Program
 		int divider = numberFibonacci / 2;
 		
 		curTime = System.currentTimeMillis();
-    	
+    	// let's create 2 thread
 		threadFibonacci2 = new ThreadFibonacci(divider + 1,numberFibonacci);	
     	threadFibonacci2.start();					
 
     	threadFibonacci1 = new ThreadFibonacci(1,divider);	
     	threadFibonacci1.start();					
     	
-
+    	// wait until both threads die 
     	while (threadFibonacci1.isAlive()||threadFibonacci2.isAlive()) {
 			
 		}

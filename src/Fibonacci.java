@@ -19,7 +19,7 @@ public class Fibonacci {
 		return 0;
 		
 		};
-		
+	// calculates fibonacci numbers from interval	
 	void calculateFibonacci(){
 		int fibonacciN;
 		for (int i = firstFibonacci; i <= lastFibonacci; i++) {
