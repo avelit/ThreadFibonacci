@@ -1,9 +1,9 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Program
 {
-    static ThreadFibonacci threadFibonacci1;
-    static ThreadFibonacci threadFibonacci2;
     
     public static void main(String[] args)
     {
@@ -29,20 +29,34 @@ public class Program
 		System.out.println();
 		System.out.println("duration 1 = " + duration1);
 		
-		int divider = numberFibonacci / 2;
+		int start = 1;
+		int finish = numberFibonacci / 5;
 		
 		curTime = System.currentTimeMillis();
-    	// let's create 2 thread
-		threadFibonacci2 = new ThreadFibonacci(divider + 1,numberFibonacci);	
-    	threadFibonacci2.start();					
-
-    	threadFibonacci1 = new ThreadFibonacci(1,divider);	
-    	threadFibonacci1.start();					
     	
-    	// wait until both threads die 
-    	while (threadFibonacci1.isAlive()||threadFibonacci2.isAlive()) {
-			
+		List<Thread> threads = new ArrayList<Thread>();
+	    // We will create 500 threads
+	    for (int i = 0; i < 5; i++) {
+	      Runnable task = new ThreadFibonacci(start,finish);
+	      Thread worker = new Thread(task);
+	      // We can set the name of the thread
+	      worker.setName(String.valueOf(i));
+	      // Start the thread, never call method run() direct
+	      worker.start();
+	      // Remember the thread for later usage
+	      threads.add(worker);
+	      start = finish + 1;
+	      finish = (i==3)?numberFibonacci:start + numberFibonacci / 5;
+	    }
+
+		try {
+			for (Thread thread : threads) {
+	    		// wait until threads die 
+				thread.join();}
+		} catch (final InterruptedException e) {
+			e.printStackTrace();
 		}
+    	
 		long duration2 = System.currentTimeMillis() - curTime;
 		System.out.println();
 		System.out.println("duration 2 = " + duration2);

@@ -24,8 +24,7 @@ public class Fibonacci {
 		long fibonacciN;
 		for (int i = firstFibonacci; i <= lastFibonacci; i++) {
 			fibonacciN = fibonacciN(i);
-			System.out.print(fibonacciN);
-			System.out.print(" ");
+			System.out.print(fibonacciN + " ");
 		}
 	}
 }
